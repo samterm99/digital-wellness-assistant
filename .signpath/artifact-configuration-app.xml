@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SignPath artifact configuration, slug: app
+     Paste into SignPath > Project > Artifact configurations (or keep as reference).
+     Input = the GitHub artifact ZIP of dist\DigitalWellnessAssistant (workflow step "upload-unsigned-app").
+     Only OUR exe is signed; the bundled Python runtime files stay as upstream shipped them. -->
+<artifact-configuration xmlns="http://signpath.io/artifact-configuration/v1">
+  <zip-file>
+    <pe-file-set product-name="Digital Wellness Assistant">
+      <include path="DigitalWellnessAssistant.exe" />
+      <for-each>
+        <authenticode-sign />
+      </for-each>
+    </pe-file-set>
+  </zip-file>
+</artifact-configuration>

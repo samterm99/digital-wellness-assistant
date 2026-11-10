@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SignPath artifact configuration, slug: installer
+     Input = the GitHub artifact ZIP holding the Inno Setup installer (workflow step "upload-unsigned-installer"). -->
+<artifact-configuration xmlns="http://signpath.io/artifact-configuration/v1">
+  <zip-file>
+    <pe-file-set product-name="Digital Wellness Assistant">
+      <include path="DigitalWellnessAssistant-Setup-*.exe" />
+      <for-each>
+        <authenticode-sign />
+      </for-each>
+    </pe-file-set>
+  </zip-file>
+</artifact-configuration>

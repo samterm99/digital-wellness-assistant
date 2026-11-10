@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+build/
+dist/
+installer/
+signed-*/
+config.json
+state.json
+logs/
+backup_*/
+.env
+*.pfx
+*.p12
+*.log
