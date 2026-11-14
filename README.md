@@ -10,15 +10,20 @@ The interface is in Thai (a Thai guide is in [README_TH.md](README_TH.md)).
 - Skips reminders while a full-screen video, game or presentation is running (can be switched off)
 - Optional start with Windows, single-instance protection, per-user install (no administrator rights)
 
-Requires Windows 10 or 11 (64-bit). Python is **not** needed on the user's PC.
+Requires Windows 10 or 11 (64-bit). The script edition needs Python 3.9+ (installed automatically via winget if missing).
 
 ## Install
 
-1. Open the [Releases](../../releases) page and download `DigitalWellnessAssistant-Setup-<version>.exe`.
-2. Run it. It installs for the current user only and can add the app to Windows start-up.
-3. Settings and logs are stored in `%LOCALAPPDATA%\DigitalWellnessAssistant`.
+**Script edition (works with Windows 11 Smart App Control, no .exe of ours):**
+download the `DigitalWellnessAssistant-Script-<version>.zip` from the Releases page, extract it and double-click
+`INSTALL.bat`. It uses the official Python (installed with winget if missing) and needs no administrator rights.
+Uninstall with `UNINSTALL.bat`.
 
-Uninstall from Windows Settings > Apps.
+**Windows 10:** the unsigned installer `DigitalWellnessAssistant-Setup-<version>.exe` can also be used
+(SmartScreen may warn: More info > Run anyway).
+
+Settings and logs: `%LOCALAPPDATA%\DigitalWellnessAssistant` (installer) or
+`%LOCALAPPDATA%\DigitalWellnessAssistant-Source` (script edition).
 
 ## Build from source
 
@@ -34,19 +39,13 @@ powershell -File packaging\build.ps1         # PyInstaller one-folder build (+ i
 
 Releases are built by GitHub Actions ([.github/workflows/release.yml](.github/workflows/release.yml)) from a version tag such as `v1.2.0`.
 
-## Code signing policy
+## Code signing
 
-Free code signing provided by [SignPath.io](https://about.signpath.io/), certificate by [SignPath Foundation](https://signpath.org/).
+Releases are **not** code-signed. The project applied to the SignPath Foundation program and was not accepted yet
+(it is too new to show the public-visibility signals the program requires), so no code-signing claim is made.
+On Windows 11 with Smart App Control turned on, unsigned installers are blocked; use the script edition below.
 
-- Signed files are built **only from this repository**, by the automated GitHub Actions workflow above, running on GitHub-hosted runners. Every release signing request is approved manually.
-- What is signed: `DigitalWellnessAssistant.exe` and the installer `DigitalWellnessAssistant-Setup-<version>.exe`. Third-party runtime files bundled by PyInstaller are the unmodified upstream files.
-- Team roles:
-  - Authors / committers: [samterm99](https://github.com/samterm99)
-  - Reviewers: [samterm99](https://github.com/samterm99)
-  - Approvers: [samterm99](https://github.com/samterm99)
-- All team members use multi-factor authentication on GitHub and SignPath.
-
-### Privacy policy
+## Privacy policy
 
 See [PRIVACY.md](PRIVACY.md). In short: this program does not transfer any information to other networked systems. It has no network code, no telemetry and no accounts.
 
